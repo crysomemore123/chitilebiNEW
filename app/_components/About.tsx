@@ -24,9 +24,9 @@ function About() {
             href="https://www.urbinati.com/"
             className="text-blue-700 font-medium"
           >
-            Urbinati&mdash;
+            Urbinati{" "}
           </Link>
-          ს კასეტების სათეს ხაზს და ჩითილების დაწვიმების მოძრავ ავტომატიზირებულ
+          &mdash; ს კასეტების სათეს ხაზს და ჩითილების დაწვიმების მოძრავ ავტომატიზირებულ
           სისტემას &mdash;{" "}
           <Link
             target="_blank"

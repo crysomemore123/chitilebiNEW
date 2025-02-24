@@ -7,6 +7,7 @@ import third from "@/public/Service/3.jpg";
 import fourth from "@/public/Service/4.jpg";
 import fifth from "@/public/Service/5.jpg";
 import sixth from "@/public/Service/6.jpg";
+import Link from "next/link";
 
 function Service() {
   const images = [first, second, third, fourth, fifth, sixth] as const;
@@ -38,16 +39,16 @@ function Service() {
       </div>
 
       <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 pt-5">
-        {images.map((imgurl, index) => (
-          <div key={index} className="h-[300px] relative">
+        {images.map((img, index) => (
+          <Link href={img.src} key={index} className="h-[300px] relative">
             <Image
-              src={imgurl}
+              src={img}
               alt="Image of plants"
               fill
               sizes="300px"
               className="object-cover"
             />
-          </div>
+          </Link>
         ))}
       </div>
     </Section>
