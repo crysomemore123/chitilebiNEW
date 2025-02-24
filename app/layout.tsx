@@ -34,19 +34,19 @@ export default function RootLayout({
           id="google-analytics"
           strategy="afterInteractive"
           dangerouslySetInnerHTML={{
-            __html: 
+            __html: `
               window.dataLayer = window.dataLayer || [];
               function gtag(){dataLayer.push(arguments);}
               gtag('js', new Date());
               gtag('config', 'G-ER1V05SFWH', {
                 page_path: window.location.pathname,
               });
-            ,
+            `,
           }}
         />
       </head>
       <body
-        className={${notoSansGeorgian.className} text-slate-950 overflow-x-hidden}
+        className={`${notoSansGeorgian.className} text-slate-950 overflow-x-hidden`}
       >
         <Header />
         <Navigation />
