@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { galleryImages } from "../../.next/_utils/constants";
+import { galleryImages } from "../../app/_utils/constants";
 import Image from "next/image";
 import { Icon } from "@iconify/react/dist/iconify.js";
 
