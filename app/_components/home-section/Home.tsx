@@ -3,7 +3,7 @@ import ImageSlider from "../ImageSlider";
 function Home() {
   return (
     <section>
-      <div className="relative md:hidden lg:block h-[40rem] sm:h-[78.2rem]">
+      <div className="relative md:hidden lg:block min-h-[40rem] h-screen">
         <ImageSlider />
         <h1 className="text-white text-center sm:leading-[5rem] font-bold xss:text-nowrap xss:text-lg xs:text-[1.3rem] sm:text-3xl md:text-4xl absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
           <span className="block mb-4">მაღალხარისხიანი ჩითილები</span>

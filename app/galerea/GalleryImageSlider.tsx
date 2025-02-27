@@ -22,7 +22,6 @@ function GalleryImageSlider({ index }: { index: number }) {
 
   return (
     <div className="relative h-[80vh] w-[80vw] overflow-hidden">
-      {/* Image Slider */}
       <div
         className="flex h-full w-full transition-transform duration-500 ease-in-out"
         style={{ transform: `translateX(-${currentIndex * 100}%)` }}

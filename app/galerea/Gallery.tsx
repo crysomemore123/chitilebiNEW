@@ -7,7 +7,7 @@ import GalleryImageSlider from "./GalleryImageSlider";
 
 function Gallery() {
   return (
-    <div className="grid grid-cols-3 gap-4 w-full  place-items-center my-4">
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 w-full  place-items-center my-4">
       {galleryImages.map((img, i) => (
         <Modal key={i}>
           <Modal.Open opens="something">

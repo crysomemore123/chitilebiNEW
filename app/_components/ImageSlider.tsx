@@ -23,18 +23,17 @@ const ImageSlider = () => {
   }, [images.length]);
 
   return (
-    <div className="flex h-full">
+    <div
+      className="flex h-screen transition-transform duration-500 ease-in-out"
+      style={{ transform: `translateX(-${currentIndex * 100}%)` }}
+    >
       {images.map((src, index) => (
-        <div
-          key={index}
-          className="relative aspect-[3/2] h-[40rem] sm:h-[78.2rem] duration-500 ease-in-out"
-          style={{ transform: `translateX(-${currentIndex * 100}%)` }}
-        >
+        <div key={index} className="relative h-full w-full flex-shrink-0">
           <Image
             src={src}
             alt={`Slide ${index + 1}`}
             fill
-            className="-z-20 w-full md:h-[782px] object-cover brightness-75"
+            className="-z-20 absolute inset-0 object-cover brightness-75"
           />
         </div>
       ))}
