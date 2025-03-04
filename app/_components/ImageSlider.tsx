@@ -1,7 +1,7 @@
 "use client";
 
-import Image from "next/image";
 import { useState, useEffect } from "react";
+import Image from "next/image";
 import firstImage from "@/public/slideshow/Slideshow 1.jpg";
 import secondImage from "@/public/slideshow/Slideshow 2.jpg";
 import thirdImage from "@/public/slideshow/Slideshow 3.jpg";
@@ -17,26 +17,33 @@ const ImageSlider = () => {
       setCurrentIndex((prevIndex) =>
         prevIndex === images.length - 1 ? 0 : prevIndex + 1
       );
-    }, 2000);
+    }, 3000);
 
     return () => clearInterval(interval);
   }, [images.length]);
 
   return (
-    <div
-      className="flex h-screen transition-transform duration-500 ease-in-out"
-      style={{ transform: `translateX(-${currentIndex * 100}%)` }}
-    >
-      {images.map((src, index) => (
-        <div key={index} className="relative h-full w-full flex-shrink-0">
-          <Image
-            src={src}
-            alt={`Slide ${index + 1}`}
-            fill
-            className="-z-20 absolute inset-0 object-cover brightness-75"
-          />
-        </div>
-      ))}
+    <div className="relative w-full overflow-hidden">
+      <div
+        className="flex transition-transform duration-700 ease-in-out"
+        style={{ transform: `translateX(-${currentIndex * 100}%)` }}
+      >
+        {images.map((src, index) => (
+          <div key={index} className="relative w-full flex-shrink-0">
+            <Image
+              src={src}
+              alt={`Slide ${index + 1}`}
+              width={1920}  // Default width for larger screens
+              height={1080} // Default height for larger screens
+              sizes="(max-width: 768px) 100vw, 1920px"  // Adjusts image size for different screen widths
+              quality={100} // Ensures the highest image quality
+              priority={index === 0} // Prioritize loading the first image
+              objectFit="cover"  // Ensures the image fills its container while preserving aspect ratio
+              className="w-full h-full object-cover"
+            />
+          </div>
+        ))}
+      </div>
     </div>
   );
 };

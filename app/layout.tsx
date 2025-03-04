@@ -17,9 +17,8 @@ export const metadata: Metadata = {
     default: "ევროპული ჩითილები",
     template: "%s | ევროპული ჩითილები",
   },
-
   description:
-    "„ევროპული ჩითილები“ დასპეციალიზებულია მხოლოდ მაღალხარისხიანი ჩითილების მოყვანაზე. ასორტიმენტშია – წიწაკა, პომიდორი, კიტრი, სალათა, ნესვი, საზამთრო, ბადრიჯანი, ბროკოლი, ყვავილოვანი კომბოსტო და მრავალი სხვა. გამოგიყვანთ პრაქტიკულად ნებისმიერი ბოსტნეულის ჩითილს. ფასი დამოკიდებულია მცენარის სახეობაზე, მოყვანის პერიოდზე, კასეტის ზომაზე და რიგ სხვა დეტალზე.",
+    "„ევროპული ჩითილები“ დასპეციალიზებულია მხოლოდ მაღალხარისხიანი ჩითილების მოყვანაზე. ასორტიმენტშია – წიწაკა, პომიდორი, კიტრი, სალათა, ნესვი, საზამთრო, ბადრიჯანი, ბროკოლი, ყვავილოვანი კომბოსტო და მრავალი სხვა.",
   keywords: [
     "ევროპული ჩითილები",
     "ჩითილები",
@@ -34,12 +33,11 @@ export const metadata: Metadata = {
       template: "%s | ევროპული ჩითილები",
     },
     description:
-      "„ევროპული ჩითილები“ დასპეციალიზებულია მხოლოდ მაღალხარისხიანი ჩითილების მოყვანაზე. ასორტიმენტშია – წიწაკა, პომიდორი, კიტრი, სალათა, ნესვი, საზამთრო, ბადრიჯანი, ბროკოლი, ყვავილოვანი კომბოსტო და მრავალი სხვა.",
+      "„ევროპული ჩითილები“ დასპეციალიზებულია მხოლოდ მაღალხარისხიანი ჩითილების მოყვანაზე.",
     siteName: "ევროპული ჩითილები",
     locale: "ge-ka",
     type: "website",
   },
-
   robots: {
     index: true,
     follow: true,
@@ -50,6 +48,11 @@ export const metadata: Metadata = {
     },
   },
   category: "plants",
+};
+
+export const viewport = {
+  width: "device-width",
+  initialScale: 1.0,
 };
 
 export default function RootLayout({
@@ -81,7 +84,7 @@ export default function RootLayout({
         />
       </head>
       <body
-        className={`${notoSansGeorgian.className} text-slate-950 overflow-x-hidden`}
+        className={`${notoSansGeorgian.className} text-slate-950 overflow-x-hidden w-full min-h-screen`}
       >
         <Header />
         <Navigation />

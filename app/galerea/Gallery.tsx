@@ -17,7 +17,7 @@ function Gallery() {
                 alt={`Gallery ${i + 1}`}
                 fill
                 sizes="20vw"
-                className="-z-20 w-full object-cover"
+                className="-z-20 w-full object-contain"
               />
             </div>
           </Modal.Open>
