@@ -1,27 +1,22 @@
 "use client";
 
 import Image from "next/image";
-import { galleryImages } from "../_utils/constants";
+import { galleryImages, galleryImagesSecond, galleryImagesThird } from "@/app/_utils/constants";
 import Modal from "./Modal";
 import GalleryImageSlider from "./GalleryImageSlider";
 
-function Gallery({ section }: { section: "first" | "second" }) {
-  if (!galleryImages) {
-    return <p>Loading...</p>;
-  }
+function Gallery({ section }: { section: "first" | "second" | "third" }) {
+  let imagesToShow = [];
 
-  // Ensure `galleryImages` is an array before calling `.slice()`
-  const imagesToShow = Array.isArray(galleryImages)
-    ? section === "first"
-      ? galleryImages.slice(0, 37)
-      : galleryImages.slice(37, 45)
-    : [];
+  if (section === "first") imagesToShow = galleryImages;
+  else if (section === "second") imagesToShow = galleryImagesSecond;
+  else if (section === "third") imagesToShow = galleryImagesThird;
 
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 w-full place-items-center my-4">
       {imagesToShow.map((img, i) => (
         <Modal key={i}>
-          <Modal.Open opens={`gallery-${section}-${i}`}>
+          <Modal.Open opens={`modal-${section}-${i}`}>
             <div className="relative aspect-square h-[20rem] self-center hover:cursor-pointer">
               <Image
                 src={img}
@@ -32,7 +27,7 @@ function Gallery({ section }: { section: "first" | "second" }) {
               />
             </div>
           </Modal.Open>
-          <Modal.Window name={`gallery-${section}-${i}`}>
+          <Modal.Window name={`modal-${section}-${i}`}>
             <GalleryImageSlider index={i} />
           </Modal.Window>
         </Modal>
