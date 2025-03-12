@@ -12,6 +12,9 @@ function GalereaPage() {
 
       <SectionHeader>ყვავილები</SectionHeader>
       <Gallery section="third" />
+
+      <SectionHeader>ჩვენი ყვავილების გამოყენება ღია გრუნტზე</SectionHeader>
+      <Gallery section="fourth" />
     </section>
   );
 }

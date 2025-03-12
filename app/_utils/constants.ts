@@ -87,3 +87,14 @@ export const galleryImagesThird = [
   galleryImg56, galleryImg57, galleryImg58, galleryImg59, galleryImg60,
   galleryImg61, galleryImg62, galleryImg63, galleryImg64,
 ];
+
+export const galleryImagesFourth = [
+  "/galerea/66.jpg", "/galerea/67.jpg", "/galerea/68.jpg", "/galerea/69.jpg",
+  "/galerea/70.jpg", "/galerea/71.jpg", "/galerea/72.jpg", "/galerea/73.jpg",
+  "/galerea/74.jpg", "/galerea/75.jpg", "/galerea/76.jpg", "/galerea/77.jpg",
+  "/galerea/78.jpg", "/galerea/79.jpg", "/galerea/80.jpg", "/galerea/81.jpg",
+  "/galerea/82.jpg", "/galerea/83.jpg", "/galerea/84.jpg", "/galerea/85.jpg",
+  "/galerea/86.jpg", "/galerea/87.jpg", "/galerea/88.jpg"
+];
+
+export const galleryVideo = "/galerea/65.mp4"; // Path to your local video
