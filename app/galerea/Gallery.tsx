@@ -1,8 +1,8 @@
-import Image from "next/image";
+import Image, { type StaticImageData } from "next/image";
 import { galleryImages, galleryImagesSecond, galleryImagesThird } from "@/app/_utils/constants";
 
 function Gallery({ section }: { section: "first" | "second" | "third" }) {
-  let imagesToShow: string[] = [];
+  let imagesToShow: StaticImageData[] = []; // Fix type issue
 
   if (section === "first") imagesToShow = galleryImages;
   else if (section === "second") imagesToShow = galleryImagesSecond;
@@ -15,8 +15,8 @@ function Gallery({ section }: { section: "first" | "second" | "third" }) {
           key={index}
           src={image}
           alt={`Gallery Image ${index + 1}`}
-          width={500} // Adjust this value based on your image sizes
-          height={300} // Adjust this value based on your image sizes
+          width={500} 
+          height={300} 
           className="w-full h-auto rounded-lg"
         />
       ))}
