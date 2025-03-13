@@ -11,7 +11,7 @@ function Footer() {
         <FlexBox className="justify-between flex-col sm:flex-row lg:gap-20 xl:gap-48">
           <Image src={logo} alt="ევროპული ჩითილების ლოგო" width={350} />
 
-          <FlexBox className=" sm:justify-center items-center gap-5">
+          <FlexBox className="sm:justify-center items-center gap-2"> {/* Reduced gap */}
             <Link
               target="_blank"
               href="https://www.facebook.com/evropulichitilebi"
@@ -20,7 +20,7 @@ function Footer() {
                 icon="basil:facebook-solid"
                 width={30}
                 height={30}
-                className=" text-green-700"
+                className="text-green-700"
               />
             </Link>
 
@@ -30,16 +30,16 @@ function Footer() {
             >
               <Icon
                 icon="mdi:instagram"
-                width={250}
-                height={25}
-                className=" text-green-700"
+                width={30} // Adjusted width to match Facebook icon
+                height={30}
+                className="text-green-700"
               />
             </Link>
           </FlexBox>
         </FlexBox>
 
         <FlexBox className="gap-6 flex-col font-semibold text-lg">
-          <FlexBox className=" items-center gap-6">
+          <FlexBox className="items-center gap-6">
             <Icon
               icon="f7:phone-circle-fill"
               width={30}
