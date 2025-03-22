@@ -17,8 +17,7 @@ export const metadata: Metadata = {
     default: "ევროპული ჩითილები",
     template: "%s | ევროპული ჩითილები",
   },
-  description:
-    "„ევროპული ჩითილები“ დასპეციალიზებულია მხოლოდ მაღალხარისხიანი ჩითილების მოყვანაზე. ასორტიმენტშია – წიწაკა, პომიდორი, კიტრი, სალათა, ნესვი, საზამთრო, ბადრიჯანი, ბროკოლი, ყვავილოვანი კომბოსტო და მრავალი სხვა.",
+  description: "ევროპული ჩითილები დასპეციალიზებულია მხოლოდ მაღალხარისხიანი ჩითილების მოყვანაზე. ასორტიმენტშია – წიწაკა, პომიდორი, კიტრი, სალათა, ნესვი, საზამთრო, ბადრიჯანი, ბროკოლი, ყვავილოვანი კომბოსტო და მრავალი სხვა.",
   keywords: [
     "ევროპული ჩითილები",
     "ჩითილები",
@@ -32,8 +31,7 @@ export const metadata: Metadata = {
       default: "ევროპული ჩითილები",
       template: "%s | ევროპული ჩითილები",
     },
-    description:
-      "„ევროპული ჩითილები“ დასპეციალიზებულია მხოლოდ მაღალხარისხიანი ჩითილების მოყვანაზე.",
+    description: "ევროპული ჩითილები დასპეციალიზებულია მხოლოდ მაღალხარისხიანი ჩითილების მოყვანაზე.",
     siteName: "ევროპული ჩითილები",
     locale: "ge-ka",
     type: "website",
@@ -63,7 +61,7 @@ export default function RootLayout({
   return (
     <html lang="ka" className="scroll-smooth">
       <head>
-        {/* Google Analytics Script */}
+        {/* Google Analytics and Google Ads Scripts */}
         <Script
           strategy="afterInteractive"
           src="https://www.googletagmanager.com/gtag/js?id=G-ER1V05SFWH"
@@ -79,6 +77,7 @@ export default function RootLayout({
               gtag('config', 'G-ER1V05SFWH', {
                 page_path: window.location.pathname,
               });
+              gtag('config', 'AW-868970948');
             `,
           }}
         />
