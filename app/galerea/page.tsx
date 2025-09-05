@@ -13,10 +13,11 @@ import "yet-another-react-lightbox/styles.css";
 // Import the plugin for video support
 import { Video } from "yet-another-react-lightbox/plugins";
 
-// --- FIX: Define the specific types for our gallery items to satisfy TypeScript ---
+// --- Define the specific types for our gallery items ---
 type ImageSlide = {
   src: string;
   type?: undefined;
+  poster?: undefined;
 };
 
 type VideoSlide = {
@@ -89,36 +90,40 @@ function Gallery({
   images,
   onImageClick,
 }: {
-  // --- FIX: Use the new GallerySlide type instead of any[] ---
   images: GallerySlide[];
   onImageClick: (index: number) => void;
 }) {
   return (
     <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 mb-16">
-      {images.map((item, idx) => (
-        <div
-          key={idx}
-          className="relative cursor-pointer overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 aspect-square group"
-          onClick={() => onImageClick(idx)}
-        >
-          <Image
-            src={item.poster || item.src}
-            alt={`Gallery item ${idx + 1}`}
-            width={500}
-            height={500}
-            className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
-            placeholder="blur"
-            blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mN8/+F9PQAI8wNPvd7POQAAAABJRU5ErkJggg=="
-          />
-          {item.type === "video" && (
-            <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-30 group-hover:bg-opacity-40 transition-colors duration-300">
-              <svg className="w-16 h-16 text-white opacity-80 group-hover:opacity-100 transition-opacity duration-300" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M8 5v14l11-7z" />
-              </svg>
-            </div>
-          )}
-        </div>
-      ))}
+      {images.map((item, idx) => {
+        // --- FIX: Determine the image source safely before passing it to the Image component ---
+        const imageSrc = item.type === 'video' ? item.poster : item.src;
+
+        return (
+          <div
+            key={idx}
+            className="relative cursor-pointer overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 aspect-square group"
+            onClick={() => onImageClick(idx)}
+          >
+            <Image
+              src={imageSrc}
+              alt={`Gallery item ${idx + 1}`}
+              width={500}
+              height={500}
+              className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+              placeholder="blur"
+              blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mN8/+F9PQAI8wNPvd7POQAAAABJRU5ErkJggg=="
+            />
+            {item.type === "video" && (
+              <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-30 group-hover:bg-opacity-40 transition-colors duration-300">
+                <svg className="w-16 h-16 text-white opacity-80 group-hover:opacity-100 transition-opacity duration-300" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M8 5v14l11-7z" />
+                </svg>
+              </div>
+            )}
+          </div>
+        );
+      })}
     </div>
   );
 }
@@ -128,7 +133,6 @@ export default function GalereaPage() {
   const [lightboxState, setLightboxState] = useState<{
     open: boolean;
     index: number;
-    // --- FIX: Use the new GallerySlide type instead of any[] ---
     slides: GallerySlide[];
   }>({
     open: false,
