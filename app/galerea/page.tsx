@@ -13,9 +13,25 @@ import "yet-another-react-lightbox/styles.css";
 // Import the plugin for video support
 import { Video } from "yet-another-react-lightbox/plugins";
 
+// --- FIX: Define the specific types for our gallery items to satisfy TypeScript ---
+type ImageSlide = {
+  src: string;
+  type?: undefined;
+};
+
+type VideoSlide = {
+  type: "video";
+  poster: string;
+  sources: {
+    src: string;
+    type: string;
+  }[];
+};
+
+type GallerySlide = ImageSlide | VideoSlide;
+
 // --- ALL YOUR IMAGE AND VIDEO PATHS ARE NOW INCLUDED ---
-// The files are distributed across the four sections.
-const galleryData = {
+const galleryData: Record<string, GallerySlide[]> = {
   first: [
     // Images 1 to 22 (with .png updates)
     { src: "/galerea/1.png" }, { src: "/galerea/2.jpg" }, { src: "/galerea/3.jpg" },
@@ -47,10 +63,9 @@ const galleryData = {
     { src: "/galerea/57.jpg" }, { src: "/galerea/58.jpg" }, { src: "/galerea/59.jpg" },
     { src: "/galerea/60.jpg" }, { src: "/galerea/61.jpg" }, { src: "/galerea/62.jpg" },
     { src: "/galerea/63.jpg" }, { src: "/galerea/64.jpg" },
-    // This is the video slide, using your custom thumbnail
     {
       type: "video",
-      poster: "/galerea/65-thumbnail.png", // Using your PNG thumbnail
+      poster: "/galerea/65-thumbnail.png",
       sources: [{ src: "/galerea/65.mp4", type: "video/mp4" }],
     },
     { src: "/galerea/66.jpg" },
@@ -67,7 +82,6 @@ const galleryData = {
   ],
 };
 
-// Define the type for the keys of galleryData
 type GallerySection = keyof typeof galleryData;
 
 // Reusable Gallery Component
@@ -75,7 +89,8 @@ function Gallery({
   images,
   onImageClick,
 }: {
-  images: any[]; // Use 'any' to support both image and video objects
+  // --- FIX: Use the new GallerySlide type instead of any[] ---
+  images: GallerySlide[];
   onImageClick: (index: number) => void;
 }) {
   return (
@@ -87,7 +102,7 @@ function Gallery({
           onClick={() => onImageClick(idx)}
         >
           <Image
-            src={item.poster || item.src} // Use poster for video, src for image
+            src={item.poster || item.src}
             alt={`Gallery item ${idx + 1}`}
             width={500}
             height={500}
@@ -108,13 +123,17 @@ function Gallery({
   );
 }
 
-
 // Main Page Component
 export default function GalereaPage() {
-  const [lightboxState, setLightboxState] = useState({
+  const [lightboxState, setLightboxState] = useState<{
+    open: boolean;
+    index: number;
+    // --- FIX: Use the new GallerySlide type instead of any[] ---
+    slides: GallerySlide[];
+  }>({
     open: false,
     index: 0,
-    slides: [] as any[],
+    slides: [],
   });
 
   const openLightboxForSection = (section: GallerySection, index: number) => {
@@ -169,7 +188,6 @@ export default function GalereaPage() {
         close={() => setLightboxState((prev) => ({ ...prev, open: false }))}
         index={lightboxState.index}
         slides={lightboxState.slides}
-        // Add the Video plugin here
         plugins={[Video]}
       />
     </section>
