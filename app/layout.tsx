@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import Script from "next/script"; // Import next/script
+import Script from "next/script";
 import "./globals.css";
 import { Noto_Sans_Georgian } from "next/font/google";
 import Header from "./_components/Header";
@@ -61,6 +61,11 @@ export default function RootLayout({
   return (
     <html lang="ka" className="scroll-smooth">
       <head>
+        {/* Preconnect to Google Maps for faster loading */}
+        <link rel="preconnect" href="https://www.google.com" />
+        <link rel="preconnect" href="https://maps.googleapis.com" />
+        <link rel="preconnect" href="https://maps.gstatic.com" crossOrigin="" />
+        
         {/* Google Analytics and Google Ads Scripts */}
         <Script
           strategy="afterInteractive"
