@@ -64,7 +64,7 @@ export default function RootLayout({
         {/* Preconnect to Google Maps for faster loading */}
         <link rel="preconnect" href="https://www.google.com" />
         <link rel="preconnect" href="https://maps.googleapis.com" />
-        <link rel="preconnect" href="https://maps.gstatic.com" crossOrigin="" />
+        <link rel="preconnect" href="https://maps.gstatic.com" crossOrigin="anonymous" />
         
         {/* Google Analytics and Google Ads Scripts */}
         <Script
